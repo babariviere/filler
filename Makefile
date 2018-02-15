@@ -1,6 +1,6 @@
 NAME=$(shell whoami).filler
 
-SRC_NAME=main.c map.c
+SRC_NAME=main.c map.c piece.c
 SRC=$(addprefix src/, $(SRC_NAME))
 OBJ=$(patsubst src/%.c, obj/%.o, $(SRC))
 INC=-Iinclude -Ilibft/include

@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:24:23 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 12:35:01 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/15 12:41:20 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,15 @@ typedef struct	s_map {
 
 t_map			*create_map(void);
 void			update_map(t_map *map);
+void			delete_map(t_map **map);
+
+typedef struct	s_piece {
+	char	**data;
+	size_t	width;
+	size_t	height;
+}				t_piece;
+
+t_piece			*create_piece(void);
+void			delete_piece(t_piece **piece);
 
 #endif

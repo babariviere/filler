@@ -1,71 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   piece.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 12:26:04 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 12:46:37 by briviere         ###   ########.fr       */
+/*   Created: 2018/02/15 12:39:58 by briviere          #+#    #+#             */
+/*   Updated: 2018/02/15 12:46:22 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static void		fill_size(char *buf, t_map *map)
+static void		fill_size(char *buf, t_piece *piece)
 {
 	while (*buf && !ft_iswhitespace(*buf))
 		buf++;
 	if (*buf == 0)
 		return ;
 	buf++;
-	map->height = ft_atoi(buf);
-	buf += ft_numlen(map->height);
+	piece->height = ft_atoi(buf);
+	buf += ft_numlen(piece->height);
 	if (*buf == 0 || !ft_iswhitespace(*buf))
 		return ;
 	buf++;
-	map->width = ft_atoi(buf);
+	piece->width = ft_atoi(buf);
 }
 
-t_map			*create_map(void)
+t_piece		*create_piece(void)
 {
-	t_map	*map;
+	t_piece	*piece;
 	char	*buf;
 	size_t	idx;
 
-	if ((map = ft_memalloc(sizeof(t_map))) == 0)
+	if ((piece = ft_memalloc(sizeof(t_piece))) == 0)
 		return (0);
 	if (ft_gnl(0, &buf) <= 0)
 		return (0);
-	fill_size(buf, map);
+	fill_size(buf, piece);
 	free(buf);
-	if ((map->data = ft_memalloc(sizeof(char *) * (map->height + 1))) == 0)
+	if ((piece->data = ft_memalloc(sizeof(char *) * (piece->height + 1))) == 0)
 		return (0);
 	idx = 0;
-	ft_gnl(0, &buf);
-	free(buf);
-	while (idx < map->height)
+	while (idx < piece->height)
 	{
 		if (ft_gnl(0, &buf) <= 0)
 			return (0);
-		map->data[idx++] = ft_strdup(buf + 4);
-		free(buf);
+		piece->data[idx++] = buf;
 	}
-	return (map);
+	return (piece);
 }
 
-void			update_map(t_map *map)
+void		delete_piece(t_piece **piece)
 {
-	(void)map;
-	// TODO: 
-}
-
-void		delete_map(t_map **map)
-{
-	t_map	*tmp;
+	t_piece	*tmp;
 	size_t	idx;
 
-	tmp = *map;
+	tmp = *piece;
 	if (tmp->data)
 	{
 		idx = 0;
@@ -73,5 +64,5 @@ void		delete_map(t_map **map)
 			ft_strdel(&tmp->data[idx++]);
 		ft_memdel((void **)&tmp->data);
 	}
-	ft_memdel((void **)map);
+	ft_memdel((void **)piece);
 }
