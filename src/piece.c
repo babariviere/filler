@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:39:58 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 12:46:22 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/15 13:13:51 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_piece		*create_piece(void)
 {
 	t_piece	*piece;
 	char	*buf;
-	size_t	idx;
+	int		idx;
 
 	if ((piece = ft_memalloc(sizeof(t_piece))) == 0)
 		return (0);
@@ -54,7 +54,7 @@ t_piece		*create_piece(void)
 void		delete_piece(t_piece **piece)
 {
 	t_piece	*tmp;
-	size_t	idx;
+	int		idx;
 
 	tmp = *piece;
 	if (tmp->data)

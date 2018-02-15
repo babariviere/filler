@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:26:04 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 12:46:37 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/15 13:13:41 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_map			*create_map(void)
 {
 	t_map	*map;
 	char	*buf;
-	size_t	idx;
+	int		idx;
 
 	if ((map = ft_memalloc(sizeof(t_map))) == 0)
 		return (0);
@@ -63,7 +63,7 @@ void			update_map(t_map *map)
 void		delete_map(t_map **map)
 {
 	t_map	*tmp;
-	size_t	idx;
+	int		idx;
 
 	tmp = *map;
 	if (tmp->data)

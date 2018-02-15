@@ -1,6 +1,6 @@
 NAME=$(shell whoami).filler
 
-SRC_NAME=main.c map.c piece.c
+SRC_NAME=main.c map.c piece.c locate.c place.c
 SRC=$(addprefix src/, $(SRC_NAME))
 OBJ=$(patsubst src/%.c, obj/%.o, $(SRC))
 INC=-Iinclude -Ilibft/include
@@ -33,3 +33,6 @@ re: fclean all
 
 test: all
 	@./res/filler_vm -f res/maps/map01 -p1 ./$(NAME)  -p2 res/players/superjeannot.filler 2> log
+
+test_self: all
+	@./res/filler_vm -f res/maps/map01 -p1 ./$(NAME)  -p2 ./$(NAME) 2> log

@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:20:58 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 12:47:23 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/15 13:36:52 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		main(void)
 	t_map	*map;
 	t_piece	*piece;
 	char	player;
-	size_t	idx;
+	int		idx;
 
 	player = read_player_num();
 	ft_putendl2_fd("i am ", &player, 2);
@@ -57,6 +57,23 @@ int		main(void)
 	idx = 0;
 	while (idx < piece->height)
 		ft_putendl_fd(piece->data[idx++], 2);
+	t_zone *zone = locate_player(map, player);
+	ft_putstr_fd("x: ", 2);
+	ft_putnbr_fd(zone->x, 2);
+	ft_putstr_fd(", y: ", 2);
+	ft_putnbr_fd(zone->y, 2);
+	ft_putstr_fd(", width: ", 2);
+	ft_putnbr_fd(zone->width, 2);
+	ft_putstr_fd(", height: ", 2);
+	ft_putnbr_fd(zone->height, 2);
+	ft_putchar_fd('\n', 2);
+	if (try_placing(map, piece, (t_pos){zone->x, zone->y}, player) == 1)
+	{
+		ft_putnbr(zone->x);
+		ft_putchar(' ');
+		ft_putnbr(zone->y);
+		ft_putchar('\n');
+	}
 	delete_map(&map);
 	delete_piece(&piece);
 	return (0);
