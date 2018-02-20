@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:26:04 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 13:13:41 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 15:37:10 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,40 @@ t_map			*create_map(void)
 	while (idx < map->height)
 	{
 		if (ft_gnl(0, &buf) <= 0)
-			return (0);
+			continue ;
 		map->data[idx++] = ft_strdup(buf + 4);
 		free(buf);
 	}
 	return (map);
 }
 
+static void		update_row(char *dst, const char *src)
+{
+	int		idx;
+
+	idx = -1;
+	while (dst[++idx])
+		dst[idx] = src[idx + 4];
+}
+
 void			update_map(t_map *map)
 {
-	(void)map;
-	// TODO: 
+	char	*buf;
+	int		idx;
+
+	if (ft_gnl(0, &buf) <= 0)
+		return ;
+	free(buf);
+	ft_gnl(0, &buf);
+	free(buf);
+	idx = 0;
+	while (idx < map->height)
+	{
+		if (ft_gnl(0, &buf) <= 0)
+			continue ;
+		update_row(map->data[idx++], buf);
+		free(buf);
+	}
 }
 
 void		delete_map(t_map **map)

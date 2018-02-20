@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:24:23 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/15 13:34:59 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 15:37:57 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ t_zone			*locate_player(const t_map *map, char player);
 
 int				try_placing(const t_map *map, const t_piece *piece,
 			t_pos pos, char player);
+
+t_lst			*get_poss(const t_map *map, const t_piece *piece, char player);
 
 #endif

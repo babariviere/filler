@@ -1,13 +1,13 @@
 NAME=$(shell whoami).filler
 
-SRC_NAME=main.c map.c piece.c locate.c place.c
+SRC_NAME=main.c map.c piece.c locate.c place.c poss.c
 SRC=$(addprefix src/, $(SRC_NAME))
 OBJ=$(patsubst src/%.c, obj/%.o, $(SRC))
 INC=-Iinclude -Ilibft/include
 LIB=-Llibft -lft
 
 CC=clang
-CFLAGS=-Wall -Werror -Wextra -O3 $(INC)
+CFLAGS=-Wall -Werror -Wextra -g $(INC)
 
 all: $(NAME)
 
