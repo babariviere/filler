@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 13:24:27 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 15:43:43 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 16:05:09 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int			try_placing(const t_map *map, const t_piece *piece, t_pos pos,
 	int		y;
 
 	override_one = 0;
-	if (pos.y < 0 || pos.x < 0 || (pos.x + piece->width) >= map->width ||
-			(pos.y + piece->height) >= map->height)
+	if (pos.y < 0 || pos.x < 0 || (pos.x + piece->width) > map->width ||
+			(pos.y + piece->height) > map->height)
 		return (0);
 	y = pos.y;
 	while (y < (pos.y + piece->height))

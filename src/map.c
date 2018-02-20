@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:26:04 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 15:37:10 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 18:24:32 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void			update_map(t_map *map)
 	}
 }
 
-void		delete_map(t_map **map)
+void			delete_map(t_map **map)
 {
 	t_map	*tmp;
 	int		idx;

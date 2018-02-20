@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:24:23 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 15:37:57 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 18:25:27 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,20 @@ int				try_placing(const t_map *map, const t_piece *piece,
 			t_pos pos, char player);
 
 t_lst			*get_poss(const t_map *map, const t_piece *piece, char player);
+t_pos			*get_best_poss(const t_map *map, const t_lst *poss,
+		char player);
+
+typedef struct	s_meta {
+	t_pos	top;
+	t_pos	bot;
+	t_pos	right;
+	t_pos	left;
+}				t_meta;
+
+t_pos			find_top(const t_map *map, char player);
+t_pos			find_bot(const t_map *map, char player);
+t_pos			find_left(const t_map *map, char player);
+t_pos			find_right(const t_map *map, char player);
+t_meta			find_all(const t_map *map, char player);
 
 #endif

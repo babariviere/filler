@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:39:58 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 15:32:14 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 18:24:23 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		fill_size(char *buf, t_piece *piece)
 	piece->width = ft_atoi(buf);
 }
 
-t_piece		*create_piece(void)
+t_piece			*create_piece(void)
 {
 	t_piece	*piece;
 	char	*buf;
@@ -51,7 +51,7 @@ t_piece		*create_piece(void)
 	return (piece);
 }
 
-void		delete_piece(t_piece **piece)
+void			delete_piece(t_piece **piece)
 {
 	t_piece	*tmp;
 	int		idx;

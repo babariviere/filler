@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:20:58 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 15:38:58 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 18:23:49 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ char	read_player_num(void)
 	return (0);
 }
 
-void	write_place(t_zone *zone)
+void	write_place(t_pos *pos)
 {
-	ft_putnbr(zone->y);
+	ft_putnbr(pos->y);
 	ft_putchar(' ');
-	ft_putnbr(zone->x);
+	ft_putnbr(pos->x);
 	ft_putchar('\n');
 }
 
@@ -51,14 +51,10 @@ int		main(void)
 			break ;
 		poss = get_poss(map, piece, player);
 		if (poss)
-			write_place(poss->content);
+			write_place(get_best_poss(map, poss, player));
 		else
 		{
-			for (int i = 0; i < piece->height; i++)
-				ft_putendl_fd(piece->data[i], 2);
-			ft_putendl_fd("no poss", 2);
 			delete_piece(&piece);
-			ft_putendl("-1 -1");
 			break ;
 		}
 		ft_lstdel(&poss, ft_lstdel_def);

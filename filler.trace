@@ -1,4 +1,5 @@
-seed = 3048
+seed = 9846
+O: error on input
 ./briviere.filler won
 Score:
-178AGAINST175
+288AGAINST48
