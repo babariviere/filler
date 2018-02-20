@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:39:58 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 18:24:23 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 18:33:28 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void			delete_piece(t_piece **piece)
 	int		idx;
 
 	tmp = *piece;
+	if (tmp == 0)
+		return ;
 	if (tmp->data)
 	{
 		idx = 0;

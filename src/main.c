@@ -6,7 +6,7 @@
 /*   By: briviere <briviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:20:58 by briviere          #+#    #+#             */
-/*   Updated: 2018/02/20 18:23:49 by briviere         ###   ########.fr       */
+/*   Updated: 2018/02/20 18:31:23 by briviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	read_player_num(void)
 	char	num;
 
 	if (ft_gnl(0, &line) <= 0)
+		return (0);
+	if (line == 0 || ft_strlen(line) < 11)
 		return (0);
 	num = line[10];
 	free(line);
@@ -43,8 +45,10 @@ int		main(void)
 	char	player;
 	t_lst	*poss;
 
-	player = read_player_num();
-	map = create_map();
+	if ((player = read_player_num()) == 0)
+		return (1);
+	if ((map = create_map()) == 0)
+		return (1);
 	while (1)
 	{
 		if ((piece = create_piece()) == 0)
@@ -53,14 +57,12 @@ int		main(void)
 		if (poss)
 			write_place(get_best_poss(map, poss, player));
 		else
-		{
-			delete_piece(&piece);
 			break ;
-		}
 		ft_lstdel(&poss, ft_lstdel_def);
 		delete_piece(&piece);
 		update_map(map);
 	}
+	delete_piece(&piece);
 	delete_map(&map);
 	return (0);
 }
