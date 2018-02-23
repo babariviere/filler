@@ -32,7 +32,7 @@ fclean: clean
 re: fclean all
 
 test: all
-	@./res/filler_vm -f res/maps/map01 -p1 ./$(NAME)  -p2 res/players/carli.filler 2> log
+	@./res/filler_vm -f res/maps/map01 -p2 ./$(NAME)  -p1 res/players/carli.filler 2> log
 
 test_self: all
 	@./res/filler_vm -f res/maps/map01 -p1 ./$(NAME)  -p2 ./$(NAME) 2> log | ./fillme
